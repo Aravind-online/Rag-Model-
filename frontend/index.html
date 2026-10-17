@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5f5f0" />
+    <title>Fieldnote | Knowledge assistant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Conversation sidebar">
+        <a class="brand" href="#" aria-label="Fieldnote home">
+          <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+          <span>fieldnote<span class="brand-period">.</span></span>
+        </a>
+
+        <button class="new-chat" id="new-chat" type="button">
+          <span class="plus" aria-hidden="true">+</span>
+          <span>New conversation</span>
+          <span class="shortcut">N</span>
+        </button>
+
+        <div class="sidebar-label">YOUR WORKSPACE</div>
+        <div class="workspace-row">
+          <span class="workspace-icon" aria-hidden="true">⌘</span>
+          <span class="workspace-copy"><strong>Knowledge base</strong><small>Document assistant</small></span>
+          <span class="workspace-dot" title="Knowledge base selected"></span>
+        </div>
+
+        <div class="sidebar-label recent-label">SUGGESTED STARTERS</div>
+        <button class="starter-link" type="button" data-prompt="What topics are covered in my documents?">Explore my documents</button>
+        <button class="starter-link" type="button" data-prompt="Summarize the key points from my documents.">Summarize key points</button>
+        <button class="starter-link" type="button" data-prompt="What should I know before getting started?">Help me get started</button>
+
+        <div class="sidebar-footer">
+          <div class="footer-rule"></div>
+          <div class="privacy-note"><span class="privacy-mark" aria-hidden="true">●</span><span>Answers grounded in<br />your indexed documents</span></div>
+        </div>
+      </aside>
+
+      <main class="main-panel">
+        <header class="topbar">
+          <div class="mobile-brand"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>fieldnote<span class="brand-period">.</span></div>
+          <div class="topbar-context"><span class="context-kicker">WORKSPACE</span><span class="context-name">Knowledge base</span></div>
+          <div class="connection-status" id="connection-status" data-state="idle">
+            <span class="status-dot"></span><span id="status-label">API not checked</span>
+          </div>
+        </header>
+
+        <section class="chat-scroll" id="chat-scroll" aria-label="Chat conversation">
+          <div class="welcome" id="welcome">
+            <div class="welcome-overline"><span class="overline-line"></span>YOUR DOCUMENTS, IN CONVERSATION</div>
+            <h1>Good questions<br />find <em>good answers.</em></h1>
+            <p class="welcome-description">Ask about the information in your knowledge base. Answers are generated from your indexed documents.</p>
+            <div class="prompt-grid" aria-label="Suggested questions">
+              <button class="prompt-card" type="button" data-prompt="What topics are covered in my documents?">
+                <span class="prompt-index">01 / EXPLORE</span><span class="prompt-text">What topics are covered in my documents?</span><span class="prompt-arrow" aria-hidden="true">↗</span>
+              </button>
+              <button class="prompt-card" type="button" data-prompt="Summarize the key points from my documents.">
+                <span class="prompt-index">02 / SUMMARIZE</span><span class="prompt-text">Summarize the key points from my documents.</span><span class="prompt-arrow" aria-hidden="true">↗</span>
+              </button>
+              <button class="prompt-card" type="button" data-prompt="What should I know before getting started?">
+                <span class="prompt-index">03 / GET ORIENTED</span><span class="prompt-text">What should I know before getting started?</span><span class="prompt-arrow" aria-hidden="true">↗</span>
+              </button>
+            </div>
+          </div>
+          <div class="messages" id="messages" aria-live="polite"></div>
+        </section>
+
+        <footer class="composer-area">
+          <form class="composer" id="chat-form">
+            <label class="sr-only" for="message-input">Ask a question about your documents</label>
+            <textarea id="message-input" name="message" rows="1" placeholder="Ask a question about your documents..." autocomplete="off" required></textarea>
+            <div class="composer-bottom">
+              <span class="composer-hint"><kbd>Enter</kbd> to send <span class="hint-divider">·</span> <kbd>Shift + Enter</kbd> for a new line</span>
+              <button class="send-button" id="send-button" type="submit" aria-label="Send message" title="Send message"><span class="send-label">Send</span><span aria-hidden="true">↑</span></button>
+            </div>
+          </form>
+          <p class="disclaimer">AI can make mistakes. Check important details against your source documents.</p>
+        </footer>
+      </main>
+    </div>
+  </body>
+</html>
